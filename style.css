@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
     /* Primary */
-    
+    --linear-gradient: linear-gradient(90deg ,hsl(236, 72%, 79%), hsl(237, 63%, 64%));
     /* Neutral */
     --very-light-grayish-blue: hsl(240, 78%, 98%);
     --light-grayish-blue: hsl(234, 14%, 74%);
     --grayish-blue: hsl(233, 13%, 49%);
     --dark-grayish-blue: hsl(232, 13%, 33%);
+    --bg-purple: hsl(237, 63%, 64%);
 }
 
 * {
@@ -21,80 +24,261 @@ body {
     position: relative;
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
 }
 
+h1 {
+  color: var(--dark-grayish-blue);
+}
+h3 {
+  color: var(--grayish-blue);
+}
+
+/* Bg pattern images */
 #bg-top {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: -1;
 }
 
 #bg-bottom {
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: -1;
+}
+
+/* Container */
+.container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.our-pricing{
+  margin-top: 72px;
+}
+.our-pricing h1{
+  margin-bottom: 37px;
+  text-align: center;
+}
+.price-switch {
+  margin: 0 20px 0 20px;
+}
+
+.pricing-btn {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: var(--light-grayish-blue);
 }
 
 /* Switch button */
- /* The switch - the box around the slider */
- .switch {
+.price-switch {
+  position: relative;
+  height: 30px;
+  width: 52px;
+  background: var(--linear-gradient);
+  border-radius: 25px;
+}
+/* Switch */
+.switch {
+  position: absolute;
+  right: 4px;
+  top: 3px;
+  height: 24px;
+  width: 24px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.price-switch:hover {
+  cursor: pointer;
+}
+
+.left {
+  transform: translateX(-20px);
+  transition: transform 0.2s ease-in-out;
+}
+  
+/* Card container */
+.card-container{
+  margin-top: 60px;
+}
+
+/* Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 25px 30px 30px 30px;
+    width: 330px;
+    height: 441px;
+    z-index: 2;
+}
+
+/* Header */
+.card h3 {
+  margin: 10px 0 15px 0;
+}
+
+/* Card price */
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.price h1 {
+  font-size: 40px;
+  margin-right: 5px;
+}
+.price h1:nth-child(2) {
+  font-size: 70px;
+}
+
+/* List style */
+.options {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
+.options li {
+  color: var(--grayish-blue);
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  border-top: 1px var(--very-light-grayish-blue) solid;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.options li:last-child {
+  border-bottom: 1px var(--very-light-grayish-blue) solid;
+}
+
+/* Button */
+.btn {
+  background: var(--linear-gradient);
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1.5px;
+  word-spacing: 1px;
+  font-size: 13px;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-radius: 7px;
+}
+
+.btn:hover {
+  background: white;
+  color: var(--bg-purple);
+  border: 1px var(--bg-purple) solid;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Middle card */
+#middle-card {
+  background: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  border-radius: 7px;
+  height: 485px;
+  z-index: 2;
+}
+#middle-card h1, #middle-card h3, #middle-card .options li {
+  color: white;
+}
+#middle-card .btn {
+  background: white;
+  color: var(--bg-purple);
+}
+
+#middle-card .btn:hover {
+  background: transparent;
+  color: white;
+  border: 1px white solid;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+@media screen and (min-width: 860px) {
+  .container {
+      max-width: 1100px;
+      display: flex;
+      height: 100vh;
+  }
+
+  /* Card container */
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* First/Left card */
+  #first-card {
+    border-radius: 7px 0 0 7px;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.03);
+    z-index: 1;
+  }
+
+  #last-card {
+    border-radius: 0 7px 7px 0;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.03);
+    z-index: 1;
+  }
+}
+
+
+/* Mobile */
+@media screen and (max-width: 860px) {
+  body {
     position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+    /* height: 100vh; */
+    background-image: url("./img/bg-top.svg");
+    background-position: 190px -40px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow-x: hidden;
   }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+
+  #bg-top {
     position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    right: -190px;
+    top: -30px;
+    display: none;
   }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+
+  #bg-bottom {
+    display: none;
   }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
+
+  .container {
+      max-width: 90%;
   }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+
+  #first-card, #last-card {
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.03);
+    margin-bottom: 30px;
   }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+  #middle-card {
+    margin-bottom: 30px;
   }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  } 
+
+}
